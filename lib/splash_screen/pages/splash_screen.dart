@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:ai_movie_app/core/constant/assets_constant.dart';
 import 'package:ai_movie_app/core/routes/app_routes.dart';
 import 'package:ai_movie_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: AppColors.primaryColor,
       body: Center(
         child: SvgPicture.asset(
-  'lib/core/assets/images/icon_splash.svg',
+  AssetsConstant.iconSplashScreen,
 )
       ),
     );
