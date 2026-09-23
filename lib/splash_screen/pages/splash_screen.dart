@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:ai_movie_app/core/constant/assets_constant.dart';
 import 'package:ai_movie_app/core/routes/app_routes.dart';
+
 import 'package:ai_movie_app/core/theme/app_colors.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -22,15 +24,12 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushReplacementNamed(context, AppRoutes.homeScreen);
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
-      body: Center(
-        child: SvgPicture.asset(
-  AssetsConstant.iconSplashScreen,
-)
-      ),
+      body: Center(child: SvgPicture.asset(AssetsConstant.iconSplashScreen)),
     );
   }
 }

@@ -1,5 +1,9 @@
 import 'package:ai_movie_app/core/routes/app_routes.dart';
 import 'package:ai_movie_app/home/home_screen.dart';
+import 'package:ai_movie_app/onboarding/presentation/pages/onboarding1_screen.dart';
+import 'package:ai_movie_app/onboarding/presentation/pages/onboarding2_screen.dart';
+import 'package:ai_movie_app/onboarding/presentation/pages/onboarding3_screen.dart';
+import 'package:ai_movie_app/onboarding/presentation/pages/onboarding_screen.dart';
 import 'package:ai_movie_app/splash_screen/pages/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -15,10 +19,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.splashScreen,
+      initialRoute: AppRoutes.onBoardingPageThere,
       routes: {
         AppRoutes.splashScreen: (context) => const SplashScreen(),
         AppRoutes.homeScreen: (context) => const HomeScreen(),
+        AppRoutes.onBoardingScreen: (context) => const OnboardingScreen(),
+        AppRoutes.onBoardingPageOne: (context) => const OnboardingPageOne(),
+        AppRoutes.onBoardingPageTwo: (context) => const Onboarding2Screen(),
+        AppRoutes.onBoardingPageThere: (context) => const OnboardingPageThere(),
       },
     );
   }
