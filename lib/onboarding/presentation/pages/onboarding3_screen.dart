@@ -3,8 +3,17 @@ import 'package:ai_movie_app/onboarding/presentation/widgets/custom_down_onboard
 import 'package:ai_movie_app/onboarding/presentation/widgets/info_box.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class OnboardingPageThere extends StatelessWidget {
-  const OnboardingPageThere({super.key});
+  OnboardingPageThere({
+    super.key,
+    required this.pageController,
+    required this.count,
+    required this.onTap,
+  });
+  final PageController pageController;
+  final int count;
+  VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +59,13 @@ class OnboardingPageThere extends StatelessWidget {
             ],
           ),
         ),
-        Expanded(child: CustomDownOnboardingPage()),
+        Expanded(
+          child: CustomDownOnboardingPage(
+            pageController: pageController,
+            count: count,
+            onTap: onTap,
+          ),
+        ),
       ],
     );
   }

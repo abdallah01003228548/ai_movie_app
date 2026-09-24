@@ -1,6 +1,8 @@
-import 'package:ai_movie_app/core/constant/assets_constant.dart';
 import 'package:ai_movie_app/core/theme/app_colors.dart';
-import 'package:ai_movie_app/onboarding/data_model/onboarding_data_model.dart';
+import 'package:ai_movie_app/onboarding/presentation/pages/onboarding1_screen.dart';
+import 'package:ai_movie_app/onboarding/presentation/pages/onboarding2_screen.dart';
+import 'package:ai_movie_app/onboarding/presentation/pages/onboarding3_screen.dart';
+
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -11,7 +13,7 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  List<OnboardingData> onboardingPages = onboardingData();
+  PageController pageController = PageController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,49 +23,39 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
-              child: PageView.builder(
-                itemBuilder: (context, index) {
-                  return Container(
-                    child: Column(
-                      children: [
-                        Expanded(
-                          child: Image.asset(
-                            onboardingPages[index].image,
-                            width: double.infinity,
-                            height: 400,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        SizedBox(height: 60),
-                        Expanded(
-                          child: Column(
-                            children: [
-                              Text(
-                                onboardingPages[index].title,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white,
-                                  fontFamily: 'Montserrat',
-                                ),
-                              ),
-                              SizedBox(height: 20),
-                              Text(
-                                onboardingPages[index].description,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w100,
-                                  color: Color(AppColors.textColor.value),
-                                  fontFamily: 'Montserrat',
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
+              child: PageView(
+                controller: pageController,
+                children: [
+                  OnboardingPageOne(
+                    pageController: pageController,
+                    count: 3,
+                    onTap: () {
+                      pageController.nextPage(
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                      );
+                    },
+                  ),
+
+                  Onboarding2Screen(
+                    pageController: pageController,
+                    count: 3,
+                    onTap: () {
+                      pageController.nextPage(
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                      );
+                    },
+                  ),
+
+                  OnboardingPageThere(
+                    pageController: pageController,
+                    count: 3,
+                    onTap: () {
+                      // Go to Home
+                    },
+                  ),
+                ],
               ),
             ),
           ],

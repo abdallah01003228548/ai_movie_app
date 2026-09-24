@@ -2,8 +2,17 @@ import 'package:ai_movie_app/onboarding/presentation/widgets/custom_down_onboard
 import 'package:ai_movie_app/onboarding/presentation/widgets/movie_carousel.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Onboarding2Screen extends StatelessWidget {
-  const Onboarding2Screen({super.key});
+  Onboarding2Screen({
+    super.key,
+    required this.pageController,
+    required this.count,
+    required this.onTap,
+  });
+  final PageController pageController;
+  final int count;
+  VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +20,14 @@ class Onboarding2Screen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         MovieCarousel(),
-        Expanded(child: CustomDownOnboardingPage()),
+        Expanded(
+          child: CustomDownOnboardingPage(
+            pageController: pageController,
+            count: count,
+            onTap: onTap,
+          ),
+        ),
       ],
-    ); 
+    );
   }
 }

@@ -18,7 +18,7 @@ class InfoBox extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: Colors.white, width: 2),
+        border: Border.all(color: Color(0xFF2B2B38), width: 2),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
