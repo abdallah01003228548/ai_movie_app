@@ -1,3 +1,4 @@
+import 'package:ai_movie_app/core/routes/app_routes.dart';
 import 'package:ai_movie_app/core/theme/app_colors.dart';
 import 'package:ai_movie_app/onboarding/presentation/pages/onboarding1_screen.dart';
 import 'package:ai_movie_app/onboarding/presentation/pages/onboarding2_screen.dart';
@@ -52,6 +53,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     pageController: pageController,
                     count: 3,
                     onTap: () {
+                      Navigator.pushReplacementNamed(context, AppRoutes.signupOrLoginScreen);
                       // Go to Home
                     },
                   ),
