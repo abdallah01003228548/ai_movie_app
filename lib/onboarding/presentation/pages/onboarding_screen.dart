@@ -5,6 +5,7 @@ import 'package:ai_movie_app/onboarding/presentation/pages/onboarding2_screen.da
 import 'package:ai_movie_app/onboarding/presentation/pages/onboarding3_screen.dart';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -52,8 +53,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   OnboardingPageThere(
                     pageController: pageController,
                     count: 3,
-                    onTap: () {
-                      Navigator.pushReplacementNamed(context, AppRoutes.signupOrLoginScreen);
+                    onTap: () async {
+                      final prefs = await SharedPreferences.getInstance();
+                      await prefs.setBool('has_seen_onboarding', true);
+                      if (context.mounted) {
+                        Navigator.pushReplacementNamed(context, AppRoutes.signupOrLoginScreen);
+                      }
                       // Go to Home
                     },
                   ),

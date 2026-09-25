@@ -1,4 +1,4 @@
-package com.example.ai_movie_app
+package com.example.chat_app
 
 import io.flutter.embedding.android.FlutterActivity
 
