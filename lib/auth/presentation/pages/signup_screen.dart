@@ -65,7 +65,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
       Navigator.pushNamedAndRemoveUntil(
         context,
-        AppRoutes.homeScreen,
+        AppRoutes.appSectionScreen,
         (route) => false,
       );
     } on FirebaseAuthException catch (e) {

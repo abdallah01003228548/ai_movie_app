@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
       Navigator.pushNamedAndRemoveUntil(
         context,
-        AppRoutes.homeScreen,
+        AppRoutes.appSectionScreen,
         (route) => false,
       );
     } on FirebaseAuthException catch (e) {

@@ -38,8 +38,8 @@ class _SplashScreenState extends State<SplashScreen> {
       // First time user: show onboarding
       Navigator.pushReplacementNamed(context, AppRoutes.onBoardingScreen);
     } else if (currentUser != null) {
-      // User is logged in: go to home
-      Navigator.pushReplacementNamed(context, AppRoutes.homeScreen);
+      // User is logged in: go to app section (which contains home)
+      Navigator.pushReplacementNamed(context, AppRoutes.appSectionScreen);
     } else {
       // User has seen onboarding but not logged in: go to signup/login
       Navigator.pushReplacementNamed(context, AppRoutes.signupOrLoginScreen);

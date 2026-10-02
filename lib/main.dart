@@ -1,3 +1,4 @@
+import 'package:ai_movie_app/app_section/presentation/pages/app_section_screen.dart';
 import 'package:ai_movie_app/auth/presentation/pages/create_new_password.dart';
 import 'package:ai_movie_app/auth/presentation/pages/login_screen.dart';
 import 'package:ai_movie_app/auth/presentation/pages/reset_password_screen.dart';
@@ -40,8 +41,8 @@ class MyApp extends StatelessWidget {
         AppRoutes.loginScreen: (context) => const LoginScreen(),
         AppRoutes.signupScreen: (context) => const SignUpScreen(),
         AppRoutes.resetPasswordScreen: (context) => const ResetPasswordScreen(),
-        AppRoutes.createNewPasswordScreen: (context) =>
-            const CreateNewPassword(),
+        AppRoutes.createNewPasswordScreen: (context) =>const CreateNewPassword(),
+        AppRoutes.appSectionScreen: (context) =>const AppSectionScreen(),
       },
     );
   }
