@@ -12,5 +12,6 @@ class AppRoutes {
   static const String createNewPasswordScreen = 'createNewPassword_screen';
   static const String verifyYorAccountScreen = 'verifyYorAccountScreen_screen';
   static const String appSectionScreen = 'appSectionScreen_screen';
+  static const String movieDetailScreen = 'movie_detail_screen';
 
 }

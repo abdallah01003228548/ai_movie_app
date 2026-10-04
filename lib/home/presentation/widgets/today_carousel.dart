@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:ai_movie_app/core/routes/app_routes.dart';
 import 'package:ai_movie_app/core/theme/app_colors.dart';
 import 'package:ai_movie_app/home/presentation/cubit/today_carousel_cubit.dart';
+import 'package:ai_movie_app/movie_detail/presentation/pages/movie_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -137,7 +139,16 @@ class _TodayCarouselState extends State<TodayCarousel> {
                             },
                             itemBuilder: (context, index) {
                               final movie = movies[index];
-                              return AnimatedContainer(
+                              return GestureDetector(
+                                onTap: () => Navigator.pushNamed(
+                                  context,
+                                  AppRoutes.movieDetailScreen,
+                                  arguments: MovieDetailArgs(
+                                    id: movie.id,
+                                    mediaType: movie.mediaType ?? 'movie',
+                                  ),
+                                ),
+                                child: AnimatedContainer(
                                 duration: const Duration(milliseconds: 300),
                                 margin: const EdgeInsets.symmetric(horizontal: 6),
                                 decoration: BoxDecoration(
@@ -218,7 +229,8 @@ class _TodayCarouselState extends State<TodayCarousel> {
                                     ),
                                   ],
                                 ),
-                              );
+                              ),
+                              ); // GestureDetector
                             },
                           ),
                         ),

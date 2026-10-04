@@ -4,6 +4,7 @@ import 'package:ai_movie_app/home/data/services/tmdb_service.dart';
 import 'package:ai_movie_app/home/presentation/cubit/category_chips_cubit.dart';
 import 'package:ai_movie_app/home/presentation/cubit/most_popular_cubit.dart';
 import 'package:ai_movie_app/home/presentation/cubit/today_carousel_cubit.dart';
+import 'package:ai_movie_app/movie_detail/presentation/cubit/movie_detail_cubit.dart';
 import 'package:ai_movie_app/search/presentation/cubit/actor_credits_cubit.dart';
 import 'package:ai_movie_app/search/presentation/cubit/search_multi_cubit.dart';
 import 'package:get_it/get_it.dart';
@@ -32,4 +33,7 @@ void setupServiceLocator() {
   // ── Cubits (Search) ───────────────────────────────────────────────────────
   getIt.registerFactory<SearchMultiCubit>(() => SearchMultiCubit(getIt<TmdbService>()));
   getIt.registerFactory<ActorCreditsCubit>(() => ActorCreditsCubit(getIt<TmdbService>()));
+
+  // ── Cubits (Movie Detail) ─────────────────────────────────────────────────
+  getIt.registerFactory<MovieDetailCubit>(() => MovieDetailCubit(getIt<TmdbService>()));
 }

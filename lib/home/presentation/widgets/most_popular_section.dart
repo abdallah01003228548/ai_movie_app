@@ -1,7 +1,9 @@
+import 'package:ai_movie_app/core/routes/app_routes.dart';
 import 'package:ai_movie_app/core/theme/app_colors.dart';
 import 'package:ai_movie_app/home/data/models/genre_model.dart';
 import 'package:ai_movie_app/home/data/models/movie_model.dart';
 import 'package:ai_movie_app/home/presentation/cubit/most_popular_cubit.dart';
+import 'package:ai_movie_app/movie_detail/presentation/pages/movie_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -153,69 +155,79 @@ class _MoviePosterCard extends StatelessWidget {
     final filledStars = movie.stars.floor();
     final hasHalf = (movie.stars - filledStars) >= 0.5;
 
-    return AspectRatio(
-      aspectRatio: 140 / 280,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Poster image
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                color: const Color(0xff252836),
+    return GestureDetector(
+      onTap: () => Navigator.pushNamed(
+        context,
+        AppRoutes.movieDetailScreen,
+        arguments: MovieDetailArgs(
+          id: movie.id,
+          mediaType: movie.mediaType ?? 'movie',
+        ),
+      ),
+      child: AspectRatio(
+        aspectRatio: 140 / 280,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Poster image
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: const Color(0xff252836),
+                ),
+                clipBehavior: Clip.antiAlias,
+                child: movie.posterUrl != null
+                    ? Image.network(
+                        movie.posterUrl!,
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                        errorBuilder: (_, e, s) => _posterPlaceholder(),
+                      )
+                    : _posterPlaceholder(),
               ),
-              clipBehavior: Clip.antiAlias,
-              child: movie.posterUrl != null
-                  ? Image.network(
-                      movie.posterUrl!,
-                      fit: BoxFit.cover,
-                      width: double.infinity,
-                      errorBuilder: (_, e, s) => _posterPlaceholder(),
-                    )
-                  : _posterPlaceholder(),
             ),
-          ),
-          const SizedBox(height: 8),
-          // Title
-          Text(
-            movie.title,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
-              fontFamily: 'Montserrat',
-            ),
-          ),
-          const SizedBox(height: 3),
-          // Genre name
-          if (genreName.isNotEmpty)
+            const SizedBox(height: 8),
+            // Title
             Text(
-              genreName,
+              movie.title,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
-                color: AppColors.textColor,
-                fontSize: 11,
+                color: Colors.white,
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
                 fontFamily: 'Montserrat',
               ),
             ),
-          const SizedBox(height: 4),
-          // Star rating
-          Row(
-            children: List.generate(5, (i) {
-              if (i < filledStars) {
-                return const Icon(Icons.star, color: Color(0xffFFC107), size: 14);
-              } else if (i == filledStars && hasHalf) {
-                return const Icon(Icons.star_half, color: Color(0xffFFC107), size: 14);
-              } else {
-                return const Icon(Icons.star_border, color: Color(0xffFFC107), size: 14);
-              }
-            }),
-          ),
-        ],
+            const SizedBox(height: 3),
+            // Genre name
+            if (genreName.isNotEmpty)
+              Text(
+                genreName,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  color: AppColors.textColor,
+                  fontSize: 11,
+                  fontFamily: 'Montserrat',
+                ),
+              ),
+            const SizedBox(height: 4),
+            // Star rating
+            Row(
+              children: List.generate(5, (i) {
+                if (i < filledStars) {
+                  return const Icon(Icons.star, color: Color(0xffFFC107), size: 14);
+                } else if (i == filledStars && hasHalf) {
+                  return const Icon(Icons.star_half, color: Color(0xffFFC107), size: 14);
+                } else {
+                  return const Icon(Icons.star_border, color: Color(0xffFFC107), size: 14);
+                }
+              }),
+            ),
+          ],
+        ),
       ),
     );
   }

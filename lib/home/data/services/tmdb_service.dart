@@ -3,6 +3,7 @@ import 'package:ai_movie_app/home/data/models/genre_model.dart';
 import 'package:ai_movie_app/home/data/models/movie_model.dart';
 import 'package:ai_movie_app/home/data/models/person_model.dart';
 import 'package:ai_movie_app/home/data/models/search_result.dart';
+import 'package:ai_movie_app/movie_detail/data/models/movie_detail_model.dart';
 import 'package:dio/dio.dart';
 
 /// Service for accessing the TMDB (The Movie Database) REST API.
@@ -155,6 +156,43 @@ class TmdbService {
         }
         return MovieModel.fromJson(map);
       }).toList();
+    } catch (e) {
+      throw Exception(_handleError(e));
+    }
+  }
+
+  /// GET /movie/{id}?append_to_response=credits,videos,release_dates
+  ///
+  /// Returns full movie detail including cast, trailer key, and US certification.
+  Future<MovieDetailModel> movieDetails(int id) async {
+    try {
+      final response = await _dio.get(
+        '/movie/$id',
+        queryParameters: {
+          'append_to_response': 'credits,videos,release_dates',
+          'language': 'en-US',
+        },
+      );
+      return MovieDetailModel.fromMovieJson(
+          response.data as Map<String, dynamic>);
+    } catch (e) {
+      throw Exception(_handleError(e));
+    }
+  }
+
+  /// GET /tv/{id}?append_to_response=credits,videos,content_ratings
+  ///
+  /// Returns full TV show detail including cast, trailer key, and US content rating.
+  Future<MovieDetailModel> tvDetails(int id) async {
+    try {
+      final response = await _dio.get(
+        '/tv/$id',
+        queryParameters: {
+          'append_to_response': 'credits,videos,content_ratings',
+          'language': 'en-US',
+        },
+      );
+      return MovieDetailModel.fromTvJson(response.data as Map<String, dynamic>);
     } catch (e) {
       throw Exception(_handleError(e));
     }

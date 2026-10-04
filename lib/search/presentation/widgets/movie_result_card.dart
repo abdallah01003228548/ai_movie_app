@@ -1,5 +1,7 @@
+import 'package:ai_movie_app/core/routes/app_routes.dart';
 import 'package:ai_movie_app/core/theme/app_colors.dart';
 import 'package:ai_movie_app/home/data/models/movie_model.dart';
+import 'package:ai_movie_app/movie_detail/presentation/pages/movie_detail_screen.dart';
 import 'package:flutter/material.dart';
 
 /// A vertical result card used in the Search screen's results list.
@@ -30,119 +32,129 @@ class MovieResultCard extends StatelessWidget {
       _ => '',
     };
 
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-      decoration: BoxDecoration(
-        color: const Color(0xff252836),
-        borderRadius: BorderRadius.circular(16),
+    return GestureDetector(
+      onTap: () => Navigator.pushNamed(
+        context,
+        AppRoutes.movieDetailScreen,
+        arguments: MovieDetailArgs(
+          id: movie.id,
+          mediaType: movie.mediaType ?? 'movie',
+        ),
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Poster
-          Expanded(
-            flex: 2,
-            child: ClipRRect(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(16),
-                bottomLeft: Radius.circular(16),
-              ),
-              child: AspectRatio(
-                aspectRatio: 95 / 130,
-                child: movie.posterUrl != null
-                    ? Image.network(
-                        movie.posterUrl!,
-                        fit: BoxFit.cover,
-                        errorBuilder: (_, e, s) => _placeholder(),
-                      )
-                    : _placeholder(),
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+        decoration: BoxDecoration(
+          color: const Color(0xff252836),
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Poster
+            Expanded(
+              flex: 2,
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(16),
+                  bottomLeft: Radius.circular(16),
+                ),
+                child: AspectRatio(
+                  aspectRatio: 95 / 130,
+                  child: movie.posterUrl != null
+                      ? Image.network(
+                          movie.posterUrl!,
+                          fit: BoxFit.cover,
+                          errorBuilder: (_, e, s) => _placeholder(),
+                        )
+                      : _placeholder(),
+                ),
               ),
             ),
-          ),
-          const SizedBox(width: 14),
-          // Info column
-          Expanded(
-            flex: 5,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  // Title
-                  Text(
-                    movie.title,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: 'Montserrat',
-                    ),
-                  ),
-                  const SizedBox(height: 6),
-                  // Star rating
-                  Row(
-                    children: [
-                      ...List.generate(5, (i) {
-                        if (i < filledStars) {
-                          return const Icon(
-                            Icons.star,
-                            color: Color(0xffFFC107),
-                            size: 14,
-                          );
-                        } else if (i == filledStars && hasHalf) {
-                          return const Icon(
-                            Icons.star_half,
-                            color: Color(0xffFFC107),
-                            size: 14,
-                          );
-                        } else {
-                          return const Icon(
-                            Icons.star_border,
-                            color: Color(0xffFFC107),
-                            size: 14,
-                          );
-                        }
-                      }),
-                      const SizedBox(width: 6),
-                      Text(
-                        movie.stars.toStringAsFixed(1),
-                        style: const TextStyle(
-                          color: Color(0xffFFC107),
-                          fontSize: 12,
-                          fontFamily: 'Montserrat',
-                        ),
+            const SizedBox(width: 14),
+            // Info column
+            Expanded(
+              flex: 5,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // Title
+                    Text(
+                      movie.title,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Montserrat',
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 6),
-                  // Meta chips row: genre | year | media type
-                  Wrap(
-                    spacing: 8,
-                    runSpacing: 4,
-                    children: [
-                      if (genreName.isNotEmpty)
-                        _MetaChip(label: genreName, icon: Icons.local_movies_outlined),
-                      if (movie.year.isNotEmpty)
-                        _MetaChip(label: movie.year, icon: Icons.calendar_today_outlined),
-                      if (mediaLabel.isNotEmpty)
-                        _MetaChip(
-                          label: mediaLabel,
-                          icon: mediaLabel == 'Series'
-                              ? Icons.tv_outlined
-                              : Icons.movie_outlined,
-                          highlight: true,
+                    ),
+                    const SizedBox(height: 6),
+                    // Star rating
+                    Row(
+                      children: [
+                        ...List.generate(5, (i) {
+                          if (i < filledStars) {
+                            return const Icon(
+                              Icons.star,
+                              color: Color(0xffFFC107),
+                              size: 14,
+                            );
+                          } else if (i == filledStars && hasHalf) {
+                            return const Icon(
+                              Icons.star_half,
+                              color: Color(0xffFFC107),
+                              size: 14,
+                            );
+                          } else {
+                            return const Icon(
+                              Icons.star_border,
+                              color: Color(0xffFFC107),
+                              size: 14,
+                            );
+                          }
+                        }),
+                        const SizedBox(width: 6),
+                        Text(
+                          movie.stars.toStringAsFixed(1),
+                          style: const TextStyle(
+                            color: Color(0xffFFC107),
+                            fontSize: 12,
+                            fontFamily: 'Montserrat',
+                          ),
                         ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                    const SizedBox(height: 6),
+                    // Meta chips row: genre | year | media type
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 4,
+                      children: [
+                        if (genreName.isNotEmpty)
+                          _MetaChip(label: genreName, icon: Icons.local_movies_outlined),
+                        if (movie.year.isNotEmpty)
+                          _MetaChip(label: movie.year, icon: Icons.calendar_today_outlined),
+                        if (mediaLabel.isNotEmpty)
+                          _MetaChip(
+                            label: mediaLabel,
+                            icon: mediaLabel == 'Series'
+                                ? Icons.tv_outlined
+                                : Icons.movie_outlined,
+                            highlight: true,
+                          ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          const SizedBox(width: 12),
-        ],
+            const SizedBox(width: 12),
+          ],
+        ),
       ),
     );
   }
