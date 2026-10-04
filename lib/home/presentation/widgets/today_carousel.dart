@@ -75,16 +75,16 @@ class _TodayCarouselState extends State<TodayCarousel> {
         BlocBuilder<TodayCarouselCubit, TodayCarouselState>(
           builder: (context, state) {
             return switch (state) {
-              TodayCarouselInitial() || TodayCarouselLoading() => const SizedBox(
-                  height: 200,
+              TodayCarouselInitial() || TodayCarouselLoading() => const AspectRatio(
+                  aspectRatio: 16 / 9,
                   child: Center(
                     child: CircularProgressIndicator(
                       color: AppColors.activeColorIndicator,
                     ),
                   ),
                 ),
-              TodayCarouselError(:final message) => SizedBox(
-                  height: 200,
+              TodayCarouselError(:final message) => AspectRatio(
+                  aspectRatio: 16 / 9,
                   child: Center(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -114,8 +114,8 @@ class _TodayCarouselState extends State<TodayCarousel> {
                   ),
                 ),
               TodayCarouselLoaded(:final movies) => movies.isEmpty
-                  ? const SizedBox(
-                      height: 200,
+                  ? const AspectRatio(
+                      aspectRatio: 16 / 9,
                       child: Center(
                         child: Text(
                           'No trending movies today',
@@ -125,8 +125,8 @@ class _TodayCarouselState extends State<TodayCarousel> {
                     )
                   : Column(
                       children: [
-                        SizedBox(
-                          height: 200,
+                      AspectRatio(
+                          aspectRatio: 16 / 9,
                           child: PageView.builder(
                             controller: _pageController,
                             itemCount: movies.length,

@@ -10,10 +10,12 @@ import 'package:ai_movie_app/onboarding/presentation/pages/onboarding_screen.dar
 import 'package:ai_movie_app/splash_screen/pages/splash_screen.dart';
 import 'package:ai_movie_app/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:ai_movie_app/core/di/service_locator.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  setupServiceLocator();
   try {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,

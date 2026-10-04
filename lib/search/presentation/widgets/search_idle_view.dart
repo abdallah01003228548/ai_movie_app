@@ -1,3 +1,4 @@
+import 'package:ai_movie_app/core/di/service_locator.dart';
 import 'package:ai_movie_app/core/theme/app_colors.dart';
 import 'package:ai_movie_app/home/data/models/genre_model.dart';
 import 'package:ai_movie_app/home/data/services/tmdb_service.dart';
@@ -18,13 +19,13 @@ class SearchIdleView extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) => TodayCarouselCubit(TmdbService())..fetchTrending(),
+          create: (_) => getIt<TodayCarouselCubit>()..fetchTrending(),
         ),
         BlocProvider(
-          create: (_) => CategoryChipsCubit(TmdbService())..fetchGenres(),
+          create: (_) => getIt<CategoryChipsCubit>()..fetchGenres(),
         ),
         BlocProvider(
-          create: (_) => MostPopularCubit(TmdbService())..fetchMostPopular(),
+          create: (_) => getIt<MostPopularCubit>()..fetchMostPopular(),
         ),
       ],
       child: SingleChildScrollView(

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:ai_movie_app/core/di/service_locator.dart';
 import 'package:ai_movie_app/core/theme/app_colors.dart';
 import 'package:ai_movie_app/home/data/models/genre_model.dart';
 import 'package:ai_movie_app/home/data/services/tmdb_service.dart';
@@ -19,8 +20,8 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => SearchMultiCubit(TmdbService())),
-        BlocProvider(create: (_) => ActorCreditsCubit(TmdbService())),
+        BlocProvider(create: (_) => getIt<SearchMultiCubit>()),
+        BlocProvider(create: (_) => getIt<ActorCreditsCubit>()),
       ],
       child: const _SearchScreenContent(),
     );
@@ -35,7 +36,7 @@ class _SearchScreenContent extends StatefulWidget {
 }
 
 class _SearchScreenContentState extends State<_SearchScreenContent> {
-  final TmdbService _tmdbService = TmdbService();
+  final TmdbService _tmdbService = getIt<TmdbService>();
   final TextEditingController _controller = TextEditingController();
   final FocusNode _focusNode = FocusNode();
 

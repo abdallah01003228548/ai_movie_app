@@ -75,9 +75,10 @@ class MostPopularSection extends StatelessWidget {
               MostPopularError(:final message) => SizedBox(
                   height: 240,
                   child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
                         Text(
                           message.isNotEmpty ? message : 'Could not load movies',
                           textAlign: TextAlign.center,
@@ -99,6 +100,7 @@ class MostPopularSection extends StatelessWidget {
                           ),
                         ),
                       ],
+                      ),
                     ),
                   ),
                 ),
@@ -151,8 +153,8 @@ class _MoviePosterCard extends StatelessWidget {
     final filledStars = movie.stars.floor();
     final hasHalf = (movie.stars - filledStars) >= 0.5;
 
-    return SizedBox(
-      width: 140,
+    return AspectRatio(
+      aspectRatio: 140 / 280,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

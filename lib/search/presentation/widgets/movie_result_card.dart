@@ -40,26 +40,29 @@ class MovieResultCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Poster
-          ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(16),
-              bottomLeft: Radius.circular(16),
-            ),
-            child: SizedBox(
-              width: 95,
-              height: 130,
-              child: movie.posterUrl != null
-                  ? Image.network(
-                      movie.posterUrl!,
-                      fit: BoxFit.cover,
-                      errorBuilder: (_, e, s) => _placeholder(),
-                    )
-                  : _placeholder(),
+          Expanded(
+            flex: 2,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(16),
+                bottomLeft: Radius.circular(16),
+              ),
+              child: AspectRatio(
+                aspectRatio: 95 / 130,
+                child: movie.posterUrl != null
+                    ? Image.network(
+                        movie.posterUrl!,
+                        fit: BoxFit.cover,
+                        errorBuilder: (_, e, s) => _placeholder(),
+                      )
+                    : _placeholder(),
+              ),
             ),
           ),
           const SizedBox(width: 14),
           // Info column
           Expanded(
+            flex: 5,
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 12),
               child: Column(
