@@ -1,3 +1,4 @@
+import 'package:ai_movie_app/core/routes/app_routes.dart';
 import 'package:ai_movie_app/core/theme/app_colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -62,18 +63,21 @@ class HomeHeader extends StatelessWidget {
             ],
           ),
           const Spacer(),
-          // Notification-style icon (decorative)
-          Container(
-            width: 36,
-            height: 36,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: const Color(0xff252836),
-            ),
-            child: const Icon(
-              Icons.notifications_none_rounded,
-              color: Colors.white,
-              size: 20,
+          // Heart / notification icon navigating to Favorite screen
+          GestureDetector(
+            onTap: () => Navigator.pushNamed(context, AppRoutes.favoriteScreen),
+            child: Container(
+              width: 36,
+              height: 36,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Color(0xff252836),
+              ),
+              child: const Icon(
+                Icons.favorite_border_rounded,
+                color: Colors.white,
+                size: 20,
+              ),
             ),
           ),
         ],

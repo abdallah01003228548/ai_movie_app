@@ -1,4 +1,6 @@
 import 'package:ai_movie_app/core/theme/app_colors.dart';
+import 'package:ai_movie_app/favorite/presentation/widgets/favorite_heart_icon.dart';
+import 'package:ai_movie_app/home/data/models/movie_model.dart';
 import 'package:ai_movie_app/movie_detail/data/models/movie_detail_model.dart';
 import 'package:ai_movie_app/movie_detail/presentation/widgets/share_bottom_sheet.dart';
 import 'package:flutter/material.dart';
@@ -110,14 +112,20 @@ class MovieDetailHeader extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 8),
-                  Container(
-                    width: 36,
-                    height: 36,
-                    decoration: BoxDecoration(
-                      color: Colors.black.withAlpha(120),
-                      borderRadius: BorderRadius.circular(18),
+                  FavoriteHeartIcon(
+                    movie: MovieModel(
+                      id: data.id,
+                      title: data.title,
+                      posterPath: data.posterPath,
+                      backdropPath: data.backdropPath,
+                      releaseDate: data.releaseDate,
+                      voteAverage: data.voteAverage,
+                      genreIds: data.genres.map((g) => g.id).toList(),
+                      overview: data.overview,
+                      mediaType: data.mediaType,
                     ),
-                    child: const Icon(Icons.favorite, color: Color(0xFFFF4D6D), size: 18),
+                    showBackground: true,
+                    iconSize: 18,
                   ),
                 ],
               ),

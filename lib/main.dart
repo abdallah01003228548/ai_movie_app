@@ -5,6 +5,7 @@ import 'package:ai_movie_app/auth/presentation/pages/reset_password_screen.dart'
 import 'package:ai_movie_app/auth/presentation/pages/signup_or_login_screen.dart';
 import 'package:ai_movie_app/auth/presentation/pages/signup_screen.dart';
 import 'package:ai_movie_app/core/routes/app_routes.dart';
+import 'package:ai_movie_app/favorite/presentation/pages/favorite_screen.dart';
 import 'package:ai_movie_app/home/home_screen.dart';
 import 'package:ai_movie_app/movie_detail/presentation/pages/movie_detail_screen.dart';
 import 'package:ai_movie_app/onboarding/presentation/pages/onboarding_screen.dart';
@@ -47,7 +48,9 @@ class MyApp extends StatelessWidget {
         AppRoutes.createNewPasswordScreen: (context) =>const CreateNewPassword(),
         AppRoutes.appSectionScreen: (context) =>const AppSectionScreen(),
         AppRoutes.movieDetailScreen: (context) => const MovieDetailScreen(),
+        AppRoutes.favoriteScreen: (context) => const FavoriteScreen(),
       },
     );
   }
 }
+

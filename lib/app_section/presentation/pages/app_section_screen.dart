@@ -1,7 +1,8 @@
 import 'package:ai_movie_app/app_section/view_model/app_section_cubit.dart';
 import 'package:ai_movie_app/app_section/view_model/app_section_state.dart';
 import 'package:ai_movie_app/core/theme/app_colors.dart';
-import 'package:ai_movie_app/favorite/pages/favorite_screen.dart';
+import 'package:ai_movie_app/favorite/presentation/pages/favorite_screen.dart';
+
 import 'package:ai_movie_app/home/home_screen.dart';
 import 'package:ai_movie_app/profile/pages/profile_screen.dart';
 import 'package:ai_movie_app/search/pages/search_screen.dart';

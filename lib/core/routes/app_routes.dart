@@ -13,5 +13,6 @@ class AppRoutes {
   static const String verifyYorAccountScreen = 'verifyYorAccountScreen_screen';
   static const String appSectionScreen = 'appSectionScreen_screen';
   static const String movieDetailScreen = 'movie_detail_screen';
+  static const String favoriteScreen = 'favorite_screen';
 
-}
+}

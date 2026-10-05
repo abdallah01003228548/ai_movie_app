@@ -4,6 +4,8 @@ import 'package:ai_movie_app/home/data/services/tmdb_service.dart';
 import 'package:ai_movie_app/home/presentation/cubit/category_chips_cubit.dart';
 import 'package:ai_movie_app/home/presentation/cubit/most_popular_cubit.dart';
 import 'package:ai_movie_app/home/presentation/cubit/today_carousel_cubit.dart';
+import 'package:ai_movie_app/favorite/data/repositories/favorite_repository.dart';
+import 'package:ai_movie_app/favorite/presentation/cubit/favorite_cubit.dart';
 import 'package:ai_movie_app/movie_detail/presentation/cubit/movie_detail_cubit.dart';
 import 'package:ai_movie_app/search/presentation/cubit/actor_credits_cubit.dart';
 import 'package:ai_movie_app/search/presentation/cubit/search_multi_cubit.dart';
@@ -21,6 +23,7 @@ void setupServiceLocator() {
   // TmdbService: lazy singleton — one Dio instance shared across all cubits.
   getIt.registerLazySingleton<TmdbService>(() => TmdbService());
   getIt.registerLazySingleton<AuthRepository>(() => AuthRepository());
+  getIt.registerLazySingleton<FavoriteRepository>(() => FavoriteRepository());
 
   // ── Cubits (Auth) ─────────────────────────────────────────────────────────
   getIt.registerFactory<AuthCubit>(() => AuthCubit(getIt<AuthRepository>()));
@@ -36,4 +39,8 @@ void setupServiceLocator() {
 
   // ── Cubits (Movie Detail) ─────────────────────────────────────────────────
   getIt.registerFactory<MovieDetailCubit>(() => MovieDetailCubit(getIt<TmdbService>()));
+
+  // ── Cubits (Favorite) ─────────────────────────────────────────────────────
+  getIt.registerFactory<FavoriteCubit>(() => FavoriteCubit(getIt<FavoriteRepository>()));
 }
+

@@ -5,20 +5,22 @@ import 'package:ai_movie_app/home/data/models/movie_model.dart';
 import 'package:ai_movie_app/movie_detail/presentation/pages/movie_detail_screen.dart';
 import 'package:flutter/material.dart';
 
-/// A vertical result card used in the Search screen's results list.
+/// Row item matching the "Wishlist" Figma frame.
 ///
-/// Shows poster, title, year, genre name, media-type badge ("Movie"/"Series"),
-/// and a 5-star rating derived from [MovieModel.stars].
-/// Runtime and certification are intentionally omitted (not available from
-/// search/multi without extra per-item requests).
-class MovieResultCard extends StatelessWidget {
+/// Layout:
+/// - Thumbnail with centered play icon overlay
+/// - Meta: genre + media-type label ("Action" / "Movie" or "Series")
+/// - Title
+/// - Star rating (0-5 stars)
+/// - Trailing red heart button
+class FavoriteListItem extends StatelessWidget {
   final MovieModel movie;
   final String genreName;
 
-  const MovieResultCard({
+  const FavoriteListItem({
     super.key,
     required this.movie,
-    required this.genreName,
+    this.genreName = '',
   });
 
   @override
@@ -26,11 +28,10 @@ class MovieResultCard extends StatelessWidget {
     final filledStars = movie.stars.floor();
     final hasHalf = (movie.stars - filledStars) >= 0.5;
 
-    // Derive media-type label
     final mediaLabel = switch (movie.mediaType) {
       'tv' => 'Series',
       'movie' => 'Movie',
-      _ => '',
+      _ => 'Movie',
     };
 
     return GestureDetector(
@@ -49,38 +50,78 @@ class MovieResultCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
         ),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Poster
-            Expanded(
-              flex: 2,
-              child: ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(16),
-                  bottomLeft: Radius.circular(16),
-                ),
-                child: AspectRatio(
-                  aspectRatio: 95 / 130,
-                  child: movie.posterUrl != null
-                      ? Image.network(
-                          movie.posterUrl!,
-                          fit: BoxFit.cover,
-                          errorBuilder: (_, e, s) => _placeholder(),
-                        )
-                      : _placeholder(),
+            // ── Thumbnail with centered play icon overlay ──
+            ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(16),
+                bottomLeft: Radius.circular(16),
+              ),
+              child: SizedBox(
+                width: 100,
+                height: 125,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    movie.posterUrl != null
+                        ? Image.network(
+                            movie.posterUrl!,
+                            fit: BoxFit.cover,
+                            errorBuilder: (_, e, s) => _placeholder(),
+                          )
+                        : _placeholder(),
+                    // Center play icon overlay
+                    Center(
+                      child: Container(
+                        width: 32,
+                        height: 32,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.black.withAlpha(140),
+                        ),
+                        child: const Icon(
+                          Icons.play_arrow_rounded,
+                          color: Colors.white,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
             const SizedBox(width: 14),
-            // Info column
+
+            // ── Title, genre, rating ──
             Expanded(
-              flex: 5,
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
+                    // Meta row (genre / media type)
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 4,
+                      children: [
+                        if (genreName.isNotEmpty)
+                          _MetaBadge(
+                            label: genreName,
+                            icon: Icons.local_movies_outlined,
+                          ),
+                        _MetaBadge(
+                          label: mediaLabel,
+                          icon: mediaLabel == 'Series'
+                              ? Icons.tv_outlined
+                              : Icons.movie_outlined,
+                          highlight: true,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 6),
+
                     // Title
                     Text(
                       movie.title,
@@ -94,6 +135,7 @@ class MovieResultCard extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 6),
+
                     // Star rating
                     Row(
                       children: [
@@ -129,35 +171,17 @@ class MovieResultCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 6),
-                    // Meta chips row: genre | year | media type
-                    Wrap(
-                      spacing: 8,
-                      runSpacing: 4,
-                      children: [
-                        if (genreName.isNotEmpty)
-                          _MetaChip(label: genreName, icon: Icons.local_movies_outlined),
-                        if (movie.year.isNotEmpty)
-                          _MetaChip(label: movie.year, icon: Icons.calendar_today_outlined),
-                        if (mediaLabel.isNotEmpty)
-                          _MetaChip(
-                            label: mediaLabel,
-                            icon: mediaLabel == 'Series'
-                                ? Icons.tv_outlined
-                                : Icons.movie_outlined,
-                            highlight: true,
-                          ),
-                      ],
-                    ),
                   ],
                 ),
               ),
             ),
+
+            // ── Trailing Heart Icon ──
             Padding(
-              padding: const EdgeInsets.only(top: 14, right: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: FavoriteHeartIcon(
                 movie: movie,
-                iconSize: 20,
+                iconSize: 22,
               ),
             ),
           ],
@@ -180,12 +204,12 @@ class MovieResultCard extends StatelessWidget {
   }
 }
 
-class _MetaChip extends StatelessWidget {
+class _MetaBadge extends StatelessWidget {
   final String label;
   final IconData icon;
   final bool highlight;
 
-  const _MetaChip({
+  const _MetaBadge({
     required this.label,
     required this.icon,
     this.highlight = false,
