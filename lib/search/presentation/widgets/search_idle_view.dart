@@ -1,7 +1,6 @@
 import 'package:ai_movie_app/core/di/service_locator.dart';
 import 'package:ai_movie_app/core/theme/app_colors.dart';
 import 'package:ai_movie_app/home/data/models/genre_model.dart';
-import 'package:ai_movie_app/home/data/services/tmdb_service.dart';
 import 'package:ai_movie_app/home/presentation/cubit/category_chips_cubit.dart';
 import 'package:ai_movie_app/home/presentation/cubit/most_popular_cubit.dart';
 import 'package:ai_movie_app/home/presentation/cubit/today_carousel_cubit.dart';
@@ -21,9 +20,7 @@ class SearchIdleView extends StatelessWidget {
         BlocProvider(
           create: (_) => getIt<TodayCarouselCubit>()..fetchTrending(),
         ),
-        BlocProvider(
-          create: (_) => getIt<CategoryChipsCubit>()..fetchGenres(),
-        ),
+        BlocProvider(create: (_) => getIt<CategoryChipsCubit>()..fetchGenres()),
         BlocProvider(
           create: (_) => getIt<MostPopularCubit>()..fetchMostPopular(),
         ),
@@ -43,12 +40,12 @@ class SearchIdleView extends StatelessWidget {
               builder: (context) {
                 return CategoryChips(
                   onGenreSelected: (genreId) {
-                    context
-                        .read<MostPopularCubit>()
-                        .fetchMostPopular(genreId: genreId);
+                    context.read<MostPopularCubit>().fetchMostPopular(
+                      genreId: genreId,
+                    );
                   },
                 );
-              }
+              },
             ),
             const SizedBox(height: 24),
 
