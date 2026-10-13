@@ -4,6 +4,10 @@
 	<dict>
 		<key>CADisableMinimumFrameDurationOnPhone</key>
 		<true/>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>Choose a profile photo from your photo library.</string>
+		<key>NSCameraUsageDescription</key>
+		<string>Take a new profile photo using your camera.</string>
 		<key>CFBundleDevelopmentRegion</key>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
 		<key>CFBundleDisplayName</key>

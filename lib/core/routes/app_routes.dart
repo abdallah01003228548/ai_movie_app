@@ -14,5 +14,9 @@ class AppRoutes {
   static const String appSectionScreen = 'appSectionScreen_screen';
   static const String movieDetailScreen = 'movie_detail_screen';
   static const String favoriteScreen = 'favorite_screen';
-
+  static const String profileScreen = 'profile_screen';
+  static const String editProfileScreen = 'edit_profile_screen';
+  static const String privacyPolicyScreen = 'privacy_policy_screen';
+  static const String notificationScreen = 'notification_screen';
+  static const String languageScreen = 'language_screen';
 }
