@@ -1,4 +1,5 @@
-import 'package:ai_movie_app/profile/data/repositories/profile_repository.dart';
+import 'package:ai_movie_app/features/profile/data/repositories/profile_repository.dart';
+
 
 sealed class ProfileState {}
 

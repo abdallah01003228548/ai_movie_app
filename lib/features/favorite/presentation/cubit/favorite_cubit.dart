@@ -1,7 +1,8 @@
 import 'dart:async';
 
-import 'package:ai_movie_app/favorite/data/repositories/favorite_repository.dart';
-import 'package:ai_movie_app/favorite/presentation/cubit/favorite_state.dart';
+
+import 'package:ai_movie_app/features/favorite/data/repositories/favorite_repository.dart';
+import 'package:ai_movie_app/features/favorite/presentation/cubit/favorite_state.dart';
 import 'package:ai_movie_app/features/home/data/models/movie_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

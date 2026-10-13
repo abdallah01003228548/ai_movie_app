@@ -1,5 +1,6 @@
 import 'package:ai_movie_app/core/theme/app_colors.dart';
-import 'package:ai_movie_app/favorite/presentation/widgets/favorite_heart_icon.dart';
+
+import 'package:ai_movie_app/features/favorite/presentation/widgets/favorite_heart_icon.dart';
 import 'package:ai_movie_app/features/home/data/models/movie_model.dart';
 import 'package:ai_movie_app/features/movie_detail/data/models/movie_detail_model.dart';
 import 'package:ai_movie_app/features/movie_detail/presentation/widgets/share_bottom_sheet.dart';

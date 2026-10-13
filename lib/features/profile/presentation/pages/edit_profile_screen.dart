@@ -1,10 +1,11 @@
 import 'dart:typed_data';
 
-import 'package:ai_movie_app/profile/presentation/cubit/edit_profile_cubit.dart';
-import 'package:ai_movie_app/profile/presentation/cubit/edit_profile_state.dart';
-import 'package:ai_movie_app/profile/presentation/cubit/profile_cubit.dart';
-import 'package:ai_movie_app/profile/presentation/cubit/profile_state.dart';
-import 'package:ai_movie_app/profile/presentation/widgets/profile_avatar.dart';
+import 'package:ai_movie_app/features/profile/presentation/cubit/edit_profile_cubit.dart';
+import 'package:ai_movie_app/features/profile/presentation/cubit/edit_profile_state.dart';
+import 'package:ai_movie_app/features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:ai_movie_app/features/profile/presentation/cubit/profile_state.dart';
+import 'package:ai_movie_app/features/profile/presentation/widgets/profile_avatar.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';

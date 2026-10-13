@@ -2,7 +2,8 @@ import 'dart:typed_data';
 
 import 'package:ai_movie_app/core/di/service_locator.dart';
 import 'package:ai_movie_app/core/theme/app_colors.dart';
-import 'package:ai_movie_app/profile/data/repositories/profile_repository.dart';
+import 'package:ai_movie_app/features/profile/data/repositories/profile_repository.dart';
+
 import 'package:flutter/material.dart';
 
 /// Reusable circular avatar that renders the user's profile photo.

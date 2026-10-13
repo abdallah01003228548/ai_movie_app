@@ -1,14 +1,16 @@
 
-import 'package:ai_movie_app/features/app_section/presentation/pages/cubit/app_section_cubit.dart';
-import 'package:ai_movie_app/features/app_section/presentation/pages/cubit/app_section_state.dart';
+import 'package:ai_movie_app/features/app_section/presentation/cubit/app_section_cubit.dart';
+import 'package:ai_movie_app/features/app_section/presentation/cubit/app_section_state.dart';
 import 'package:ai_movie_app/core/theme/app_colors.dart';
-import 'package:ai_movie_app/favorite/presentation/pages/favorite_screen.dart';
+import 'package:ai_movie_app/features/favorite/presentation/pages/favorite_screen.dart';
+
 import 'package:ai_movie_app/features/home/presentation/pages/home_screen.dart';
 
 
-import 'package:ai_movie_app/profile/presentation/pages/profile_screen.dart';
-import 'package:ai_movie_app/profile/presentation/cubit/profile_cubit.dart';
+
 import 'package:ai_movie_app/core/di/service_locator.dart';
+import 'package:ai_movie_app/features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:ai_movie_app/features/profile/presentation/pages/profile_screen.dart';
 import 'package:ai_movie_app/features/search/presentation/pages/search_screen.dart';
 
 import 'package:flutter/material.dart';

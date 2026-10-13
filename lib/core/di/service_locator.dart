@@ -1,18 +1,20 @@
 import 'package:ai_movie_app/features/auth/data/repositories/auth_repository.dart';
 import 'package:ai_movie_app/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:ai_movie_app/features/favorite/data/repositories/favorite_repository.dart';
+import 'package:ai_movie_app/features/favorite/presentation/cubit/favorite_cubit.dart';
 import 'package:ai_movie_app/features/home/data/services/tmdb_service.dart';
 import 'package:ai_movie_app/features/home/presentation/cubit/category_chips_cubit.dart';
 import 'package:ai_movie_app/features/home/presentation/cubit/most_popular_cubit.dart';
 import 'package:ai_movie_app/features/home/presentation/cubit/today_carousel_cubit.dart';
-import 'package:ai_movie_app/favorite/data/repositories/favorite_repository.dart';
-import 'package:ai_movie_app/favorite/presentation/cubit/favorite_cubit.dart';
+
 import 'package:ai_movie_app/features/movie_detail/presentation/cubit/movie_detail_cubit.dart';
+import 'package:ai_movie_app/features/profile/data/repositories/profile_repository.dart';
+import 'package:ai_movie_app/features/profile/data/services/image_picker_service.dart';
+import 'package:ai_movie_app/features/profile/presentation/cubit/edit_profile_cubit.dart';
+import 'package:ai_movie_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:ai_movie_app/features/search/presentation/cubit/actor_credits_cubit.dart';
 import 'package:ai_movie_app/features/search/presentation/cubit/search_multi_cubit.dart';
-import 'package:ai_movie_app/profile/data/repositories/profile_repository.dart';
-import 'package:ai_movie_app/profile/data/services/image_picker_service.dart';
-import 'package:ai_movie_app/profile/presentation/cubit/edit_profile_cubit.dart';
-import 'package:ai_movie_app/profile/presentation/cubit/profile_cubit.dart';
+
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;

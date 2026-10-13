@@ -1,7 +1,8 @@
 import 'dart:async';
 
-import 'package:ai_movie_app/profile/data/repositories/profile_repository.dart';
-import 'package:ai_movie_app/profile/presentation/cubit/profile_state.dart';
+
+import 'package:ai_movie_app/features/profile/data/repositories/profile_repository.dart';
+import 'package:ai_movie_app/features/profile/presentation/cubit/profile_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {

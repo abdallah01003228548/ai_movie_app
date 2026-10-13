@@ -5,23 +5,25 @@ import 'package:ai_movie_app/features/auth/presentation/pages/reset_password_scr
 import 'package:ai_movie_app/features/auth/presentation/pages/signup_or_login_screen.dart';
 import 'package:ai_movie_app/features/auth/presentation/pages/signup_screen.dart';
 import 'package:ai_movie_app/core/routes/app_routes.dart';
-import 'package:ai_movie_app/favorite/presentation/pages/favorite_screen.dart';
+
+import 'package:ai_movie_app/features/favorite/presentation/pages/favorite_screen.dart';
 import 'package:ai_movie_app/features/home/presentation/pages/home_screen.dart';
 
 import 'package:ai_movie_app/features/movie_detail/presentation/pages/movie_detail_screen.dart';
 import 'package:ai_movie_app/features/onboarding/presentation/pages/onboarding_screen.dart';
+import 'package:ai_movie_app/features/profile/presentation/cubit/edit_profile_cubit.dart';
+import 'package:ai_movie_app/features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:ai_movie_app/features/profile/presentation/pages/edit_profile_screen.dart';
+import 'package:ai_movie_app/features/profile/presentation/pages/language_screen.dart';
+import 'package:ai_movie_app/features/profile/presentation/pages/notification_screen.dart';
+import 'package:ai_movie_app/features/profile/presentation/pages/privacy_policy_screen.dart';
+import 'package:ai_movie_app/features/profile/presentation/pages/profile_screen.dart';
+import 'package:ai_movie_app/features/splash_screen/pages/splash_screen.dart';
 
 import 'package:ai_movie_app/firebase_options.dart';
-import 'package:ai_movie_app/splash_screen/pages/splash_screen.dart';
 
 import 'package:firebase_core/firebase_core.dart';
-import 'package:ai_movie_app/profile/presentation/pages/profile_screen.dart';
-import 'package:ai_movie_app/profile/presentation/pages/edit_profile_screen.dart';
-import 'package:ai_movie_app/profile/presentation/pages/notification_screen.dart';
-import 'package:ai_movie_app/profile/presentation/pages/language_screen.dart';
-import 'package:ai_movie_app/profile/presentation/pages/privacy_policy_screen.dart';
-import 'package:ai_movie_app/profile/presentation/cubit/profile_cubit.dart';
-import 'package:ai_movie_app/profile/presentation/cubit/edit_profile_cubit.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ai_movie_app/core/di/service_locator.dart';
 import 'package:flutter/material.dart';

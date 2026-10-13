@@ -1,5 +1,5 @@
 
-import 'package:ai_movie_app/features/app_section/presentation/pages/cubit/app_section_state.dart';
+import 'package:ai_movie_app/features/app_section/presentation/cubit/app_section_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppSectionCubit extends Cubit<AppSectionState> {

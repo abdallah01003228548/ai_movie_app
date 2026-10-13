@@ -1,5 +1,6 @@
-import 'package:ai_movie_app/profile/presentation/cubit/profile_cubit.dart';
-import 'package:ai_movie_app/profile/presentation/cubit/profile_state.dart';
+import 'package:ai_movie_app/features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:ai_movie_app/features/profile/presentation/cubit/profile_state.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

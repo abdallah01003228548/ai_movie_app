@@ -9,10 +9,10 @@ import 'package:ai_movie_app/features/home/presentation/widgets/home_header.dart
 import 'package:ai_movie_app/features/home/presentation/widgets/home_search_bar.dart';
 import 'package:ai_movie_app/features/home/presentation/widgets/most_popular_section.dart';
 import 'package:ai_movie_app/features/home/presentation/widgets/today_carousel.dart';
+import 'package:ai_movie_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:ai_movie_app/profile/presentation/cubit/profile_cubit.dart';
 
 class HomeScreen extends StatelessWidget {
   final VoidCallback? onSearchTap;

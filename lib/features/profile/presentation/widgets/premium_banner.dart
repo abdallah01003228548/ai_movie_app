@@ -9,7 +9,7 @@ class PremiumBanner extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
-          colors: [Color(0xffE21221), Color(0xffE21221)],
+          colors: [Color(0xFFFF9800), Color(0xFFFFB300)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -57,7 +57,7 @@ class PremiumBanner extends StatelessWidget {
                       Text(
                         'Upgrade for more features',
                         style: TextStyle(
-                          color: Colors.white70,
+                          color: Colors.white,
                           fontSize: 14,
                         ),
                       ),

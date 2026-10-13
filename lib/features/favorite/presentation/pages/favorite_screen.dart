@@ -1,9 +1,10 @@
 import 'package:ai_movie_app/core/di/service_locator.dart';
 import 'package:ai_movie_app/core/theme/app_colors.dart';
-import 'package:ai_movie_app/favorite/presentation/cubit/favorite_cubit.dart';
-import 'package:ai_movie_app/favorite/presentation/cubit/favorite_state.dart';
-import 'package:ai_movie_app/favorite/presentation/widgets/favorite_empty_state.dart';
-import 'package:ai_movie_app/favorite/presentation/widgets/favorite_list_item.dart';
+import 'package:ai_movie_app/features/favorite/presentation/cubit/favorite_cubit.dart';
+import 'package:ai_movie_app/features/favorite/presentation/cubit/favorite_state.dart';
+import 'package:ai_movie_app/features/favorite/presentation/widgets/favorite_empty_state.dart';
+import 'package:ai_movie_app/features/favorite/presentation/widgets/favorite_list_item.dart';
+
 import 'package:ai_movie_app/features/home/data/models/genre_model.dart';
 import 'package:ai_movie_app/features/home/data/services/tmdb_service.dart';
 import 'package:flutter/material.dart';
