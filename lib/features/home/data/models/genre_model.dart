@@ -1,12 +1,13 @@
-/// Represents a movie genre from the TMDB API.
-class GenreModel {
-  final int id;
-  final String name;
+import 'package:ai_movie_app/features/home/domain/entities/movie_entity.dart';
 
+/// Represents a movie genre from the TMDB API.
+class GenreModel extends GenreEntity {
   const GenreModel({
-    required this.id,
-    required this.name,
+    required super.id,
+    required super.name,
   });
+
+  GenreEntity toEntity() => this;
 
   factory GenreModel.fromJson(Map<String, dynamic> json) {
     return GenreModel(
@@ -15,3 +16,4 @@ class GenreModel {
     );
   }
 }
+

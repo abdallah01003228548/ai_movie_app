@@ -1,24 +1,24 @@
-import 'package:ai_movie_app/features/app_section/presentation/pages/app_section_screen.dart';
-import 'package:ai_movie_app/features/auth/presentation/pages/create_new_password.dart';
-import 'package:ai_movie_app/features/auth/presentation/pages/login_screen.dart';
-import 'package:ai_movie_app/features/auth/presentation/pages/reset_password_screen.dart';
-import 'package:ai_movie_app/features/auth/presentation/pages/signup_or_login_screen.dart';
-import 'package:ai_movie_app/features/auth/presentation/pages/signup_screen.dart';
+import 'package:ai_movie_app/features/app_section/presentation/view/screens/app_section_screen.dart';
+import 'package:ai_movie_app/features/auth/presentation/view/screens/create_new_password.dart';
+import 'package:ai_movie_app/features/auth/presentation/view/screens/login_screen.dart';
+import 'package:ai_movie_app/features/auth/presentation/view/screens/reset_password_screen.dart';
+import 'package:ai_movie_app/features/auth/presentation/view/screens/signup_or_login_screen.dart';
+import 'package:ai_movie_app/features/auth/presentation/view/screens/signup_screen.dart';
 import 'package:ai_movie_app/core/routes/app_routes.dart';
 
-import 'package:ai_movie_app/features/favorite/presentation/pages/favorite_screen.dart';
-import 'package:ai_movie_app/features/home/presentation/pages/home_screen.dart';
+import 'package:ai_movie_app/features/favorite/presentation/view/screens/favorite_screen.dart';
+import 'package:ai_movie_app/features/home/presentation/view/screens/home_screen.dart';
 
-import 'package:ai_movie_app/features/movie_detail/presentation/pages/movie_detail_screen.dart';
-import 'package:ai_movie_app/features/onboarding/presentation/pages/onboarding_screen.dart';
-import 'package:ai_movie_app/features/profile/presentation/cubit/edit_profile_cubit.dart';
-import 'package:ai_movie_app/features/profile/presentation/cubit/profile_cubit.dart';
-import 'package:ai_movie_app/features/profile/presentation/pages/edit_profile_screen.dart';
-import 'package:ai_movie_app/features/profile/presentation/pages/language_screen.dart';
-import 'package:ai_movie_app/features/profile/presentation/pages/notification_screen.dart';
-import 'package:ai_movie_app/features/profile/presentation/pages/privacy_policy_screen.dart';
-import 'package:ai_movie_app/features/profile/presentation/pages/profile_screen.dart';
-import 'package:ai_movie_app/features/splash_screen/pages/splash_screen.dart';
+import 'package:ai_movie_app/features/movie_detail/presentation/view/screens/movie_detail_screen.dart';
+import 'package:ai_movie_app/features/onboarding/presentation/view/screens/onboarding_screen.dart';
+import 'package:ai_movie_app/features/profile/presentation/view_model/edit_profile_cubit.dart';
+import 'package:ai_movie_app/features/profile/presentation/view_model/profile_cubit.dart';
+import 'package:ai_movie_app/features/profile/presentation/view/screens/edit_profile_screen.dart';
+import 'package:ai_movie_app/features/profile/presentation/view/screens/language_screen.dart';
+import 'package:ai_movie_app/features/profile/presentation/view/screens/notification_screen.dart';
+import 'package:ai_movie_app/features/profile/presentation/view/screens/privacy_policy_screen.dart';
+import 'package:ai_movie_app/features/profile/presentation/view/screens/profile_screen.dart';
+import 'package:ai_movie_app/features/splash_screen/presentation/view/screens/splash_screen.dart';
 
 import 'package:ai_movie_app/firebase_options.dart';
 
