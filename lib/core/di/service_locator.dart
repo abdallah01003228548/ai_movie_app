@@ -41,6 +41,11 @@ import 'package:ai_movie_app/features/search/domain/repo/search_repo_interface.d
 import 'package:ai_movie_app/features/search/domain/use_case/search_use_cases.dart';
 import 'package:ai_movie_app/features/search/presentation/view_model/actor_credits_cubit.dart';
 import 'package:ai_movie_app/features/search/presentation/view_model/search_multi_cubit.dart';
+import 'package:ai_movie_app/features/chat/data/data_sources/gemini_remote_data_source.dart';
+import 'package:ai_movie_app/features/chat/data/repositories/chat_repository_impl.dart';
+import 'package:ai_movie_app/features/chat/domain/repositories/chat_repository.dart';
+import 'package:ai_movie_app/features/chat/domain/use_cases/send_message_usecase.dart';
+import 'package:ai_movie_app/features/chat/presentation/cubit/chat_cubit.dart';
 
 import 'package:get_it/get_it.dart';
 
@@ -227,5 +232,21 @@ void setupServiceLocator() {
       getIt<UpdateProfileUseCase>(),
       getIt<ImagePickerService>(),
     ),
+  );
+
+  // ── Services & Repositories (Chat) ────────────────────────────────────────
+  getIt.registerLazySingleton<GeminiRemoteDataSource>(
+    () => GeminiRemoteDataSourceImpl(),
+  );
+  getIt.registerLazySingleton<ChatRepository>(
+    () => ChatRepositoryImpl(getIt<GeminiRemoteDataSource>()),
+  );
+  getIt.registerLazySingleton<SendMessageUseCase>(
+    () => SendMessageUseCase(getIt<ChatRepository>()),
+  );
+
+  // ── Cubits (Chat) ─────────────────────────────────────────────────────────
+  getIt.registerFactory<ChatCubit>(
+    () => ChatCubit(getIt<SendMessageUseCase>()),
   );
 }

@@ -59,7 +59,7 @@ class HomeHeader extends StatelessWidget {
               const Spacer(),
               // Heart / notification icon navigating to Favorite screen
               GestureDetector(
-                onTap: () => Navigator.pushNamed(context, AppRoutes.favoriteScreen),
+                onTap: () => Navigator.pushNamed(context, AppRoutes.chatScreen),
                 child: Container(
                   width: 36,
                   height: 36,
@@ -68,7 +68,7 @@ class HomeHeader extends StatelessWidget {
                     color: Color(0xff252836),
                   ),
                   child: const Icon(
-                    Icons.favorite_border_rounded,
+                    Icons.chat_bubble_outline,
                     color: Colors.white,
                     size: 20,
                   ),

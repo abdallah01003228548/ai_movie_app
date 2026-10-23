@@ -5,6 +5,8 @@ import 'package:ai_movie_app/features/auth/presentation/view/screens/reset_passw
 import 'package:ai_movie_app/features/auth/presentation/view/screens/signup_or_login_screen.dart';
 import 'package:ai_movie_app/features/auth/presentation/view/screens/signup_screen.dart';
 import 'package:ai_movie_app/core/routes/app_routes.dart';
+import 'package:ai_movie_app/features/chat/presentation/screens/chat_page.dart';
+
 
 import 'package:ai_movie_app/features/favorite/presentation/view/screens/favorite_screen.dart';
 import 'package:ai_movie_app/features/home/presentation/view/screens/home_screen.dart';
@@ -74,7 +76,9 @@ class MyApp extends StatelessWidget {
         ),
         AppRoutes.notificationScreen: (context) => BlocProvider.value(value: getIt<ProfileCubit>(), child: const NotificationScreen()),
         AppRoutes.languageScreen: (context) => BlocProvider.value(value: getIt<ProfileCubit>(), child: const LanguageScreen()),
-        AppRoutes.privacyPolicyScreen: (context) => const PrivacyPolicyScreen(),      },
+        AppRoutes.privacyPolicyScreen: (context) => const PrivacyPolicyScreen(),
+        AppRoutes.chatScreen: (context) => const ChatPage(),
+        },
     );
   }
 }

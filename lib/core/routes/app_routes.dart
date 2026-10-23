@@ -19,4 +19,5 @@ class AppRoutes {
   static const String privacyPolicyScreen = 'privacy_policy_screen';
   static const String notificationScreen = 'notification_screen';
   static const String languageScreen = 'language_screen';
-}
+  static const String chatScreen = 'chat_screen';
+}
